@@ -46,6 +46,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     var isDateClicked: SingleLiveEvent<Boolean>? = null
     var dateMutableLiveData = MutableLiveData<String>()
     var gender: ObservableField<String>? = null
+    var userLogin: MutableLiveData<User>? = null
     init {
         progressDialog = SingleLiveEvent<Boolean>()
         phone = ObservableField("")
@@ -60,6 +61,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         name = ObservableField("")
         location = ObservableField("")
         gender = ObservableField("")
+        userLogin = MutableLiveData<User>()
     }
 
     fun validate(s: CharSequence){
@@ -131,31 +133,38 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         validate(txt)
     }
 
+    fun getUser(): User{
+        return User(name?.get()!!, phone?.get()!!, location?.get()!!,email?.get()!!)
+    }
+
     fun getPayload(): String{
-        val user = User(name?.get()!!, phone?.get()!!, location?.get()!!,email?.get()!!)
         val preschool = preschoolMutableLiveData?.value
         val registerData = RegisterData()
-        registerData.user = user
+        registerData.user = getUser()
         registerData.preschool = preschool
         val gson = Gson()
         return gson.toJson(registerData)
     }
 
     fun register(){
+        userLogin?.value = getUser()
+    /*
         progressDialog?.value = true
         WebServiceClient.client.create(BackEndApi::class.java).REGISTER(getPayload())
             .enqueue(object: Callback<User?>{
                 override fun onFailure(call: Call<User?>?, t: Throwable?) {
                     TODO("Not yet implemented")
                     progressDialog?.value = false
+
                 }
 
                 override fun onResponse(call: Call<User?>?, response: Response<User?>?) {
                     TODO("Not yet implemented")
                     progressDialog?.value = false
-                    //navigate to MainActivity
+                    userLogin?.value = response?.body()
                 }
             })
+        */
     }
 
 

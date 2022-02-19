@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,7 +18,9 @@ import com.chikadibia.teesas.interfaces.GetPreschoolCallback
 import com.chikadibia.teesas.interfaces.GetStringCallback
 import com.chikadibia.teesas.model.Preschool
 import com.chikadibia.teesas.ui.viewmodel.RegisterViewModel
+import com.chikadibia.teesas.util.Constants
 import com.chikadibia.teesas.util.CustomeProgressDialog
+import com.chikadibia.teesas.util.Util
 
 class RegisterFragment : Fragment() {
 
@@ -51,6 +54,14 @@ class RegisterFragment : Fragment() {
 
         viewModel?.preschoolList?.observe(viewLifecycleOwner, Observer { data ->
             schoolDialog(context, data)
+        })
+
+        viewModel?.userLogin?.observe(viewLifecycleOwner, Observer { user ->
+            if (context != null) {
+                Util.authenticationFragment(
+                    context, Constants.FRAGMENT_TO_DIRECTION, DashboardFragment(), null
+                )
+            }
         })
 
         viewModel?.isDateClicked?.observe(this, Observer {

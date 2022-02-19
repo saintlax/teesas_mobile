@@ -8,10 +8,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/authentication_layout.xml" value="0.17617753623188406" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/dialog_date_picker.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/fragment_forgot_password.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/fragment_login.xml" value="0.1716485507246377" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/fragment_register.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/row_for_custom_list_view.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Teesas/app/src/main/res/layout/row_home_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
