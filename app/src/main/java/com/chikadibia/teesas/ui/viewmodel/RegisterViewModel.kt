@@ -147,24 +147,21 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun register(){
-        userLogin?.value = getUser()
-    /*
         progressDialog?.value = true
-        WebServiceClient.client.create(BackEndApi::class.java).REGISTER(getPayload())
+        WebServiceClient.client.create(BackEndApi::class.java).REGISTER(body = getPayload())
             .enqueue(object: Callback<User?>{
                 override fun onFailure(call: Call<User?>?, t: Throwable?) {
-                    TODO("Not yet implemented")
                     progressDialog?.value = false
-
+                    //for test purpose, i added this so i can navigate
+                    //this is for test purpose when the server is not set up just yet
+                    userLogin?.value = getUser()
                 }
 
                 override fun onResponse(call: Call<User?>?, response: Response<User?>?) {
-                    TODO("Not yet implemented")
                     progressDialog?.value = false
                     userLogin?.value = response?.body()
                 }
             })
-        */
     }
 
 

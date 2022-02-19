@@ -56,7 +56,11 @@ class LoginFragment : Fragment() {
 
         viewModel?.userLogin?.observe(viewLifecycleOwner, Observer { user ->
             Toast.makeText(activity, "welcome, ${user?.name}", Toast.LENGTH_LONG).show()
-            //navigate to Home Activity
+            if (context != null) {
+                Util.authenticationFragment(
+                    context, Constants.FRAGMENT_TO_DIRECTION, DashboardFragment(), null
+                )
+            }
         })
     }
 

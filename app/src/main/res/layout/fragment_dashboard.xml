@@ -17,7 +17,7 @@
 
             <TextView
                 android:id="@+id/txtdashboard"
-                android:text="@string/app_name"
+                android:text="@string/welcome"
                 android:textSize="22sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"

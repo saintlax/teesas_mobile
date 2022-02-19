@@ -49,8 +49,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application), 
         register?.value = true
     }
 
+    fun validate(){
+        btnSelected?.set(!phone?.get()!!.equals("") && password?.get()!!.toString().length >= 8)
+    }
+
     fun onPasswordChanged(s: CharSequence, start: Int, befor: Int, count: Int) {
-        btnSelected?.set(!phone?.get()!!.equals("") && s.toString().length >= 8)
+        validate()
     }
 
     fun login() {
@@ -67,17 +71,22 @@ class LoginViewModel(application: Application) : AndroidViewModel(application), 
 
     }
 
+    fun getUser(): User{
+        return User("Chika", phone?.get()!!, "Lagos state","chikadibia86@yahoo.com")
+    }
+
     override fun onFailure(call: Call<User>?, t: Throwable?) {
         progressDialog?.value = false
-
+        //this is for test purpose when the server is not set up just yet
+        userLogin?.value = getUser()
     }
 
     override fun done(view: View?, isValid: Boolean) {
         val phoneInputView = view as IntlPhoneInput?
         if(phoneInputView!!.isValid){
             phone = ObservableField(phoneInputView.text)
+            validate()
         }
-        btnSelected?.set(phoneInputView!!.isValid && password?.get()!!.length >= 8)
     }
 
 }

@@ -15,11 +15,11 @@ interface BackEndApi {
 
 
     @FormUrlEncoded
-    @POST("/schools/type/get")
+    @POST("/schools/type")
     fun GETSCHOOL(@Field("type") type: String): Call<List<Preschool?>>
 
-    @Headers("Content-Type","application/json")
+    @FormUrlEncoded
     @POST("/register")
-    fun REGISTER(@Body data: String) : Call<User>
+    fun REGISTER(@Field("body") body: String) : Call<User>
 
 }
