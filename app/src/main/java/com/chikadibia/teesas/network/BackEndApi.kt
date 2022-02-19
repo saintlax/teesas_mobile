@@ -6,11 +6,11 @@ import retrofit2.http.*
 
 interface BackEndApi {
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("users/login")
     fun LOGIN(@Field("phone") phone: String, @Field("password") password: String): Call<User>
 
     @FormUrlEncoded
-    @POST("auth/forgot")
+    @POST("users/forgot")
     fun FORGOT(@Field("phone") phone: String): Call<User>
 
 
