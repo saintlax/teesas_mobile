@@ -37,7 +37,7 @@ public class Dialogg {
             callback.done(birthDay);
         });
         alertDialog.setView(view);
-        final AlertDialog ad = alertDialog.show();
+        alertDialog.show();
     }
 
     public void preSchoolDialog(final List<Preschool> data, GetPreschoolCallback callback){
@@ -45,19 +45,15 @@ public class Dialogg {
         View view = inflater.inflate(R.layout.dialog_custom_menu_listview, null);
         alertDialog = new AlertDialog.Builder(context);
         alertDialog.setTitle("Choose School");
-
         ListView listView = (ListView)view.findViewById(R.id.lv);
         SchoolAdapter adapter = new SchoolAdapter(context, data);
         listView.setAdapter(adapter);
         alertDialog.setView(view);
         final AlertDialog ad = alertDialog.show();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Preschool preschool = data.get(i);
-                callback.done(preschool);
-                ad.dismiss();
-            }
+        listView.setOnItemClickListener((adapterView, view1, i, l) -> {
+            Preschool preschool = data.get(i);
+            callback.done(preschool);
+            ad.dismiss();
         });
     }
 }
